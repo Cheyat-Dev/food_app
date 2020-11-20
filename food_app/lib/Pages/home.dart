@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/models/food_item.dart';
+import 'package:food_app/widgets/food_item_widget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -6,12 +8,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<String> recommendedItemsMock = [
-    'Coffee',
-    'Briyani',
-    'Tea',
-    'Rice',
-    'Chicken Tandoori'
+  List<FoodItemModel> recommendedItemsMock = [
+    FoodItemModel(itemName: 'Tea'),
+    FoodItemModel(itemName: 'Coffee'),
+    FoodItemModel(itemName: 'Briyani'),
+    FoodItemModel(itemName: 'Rice'),
+    FoodItemModel(itemName: 'Mutton'),
   ];
 
   @override
@@ -36,22 +38,37 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             SizedBox(height: 50.0),
             Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 15.0,
-              ),
               height: 150.0,
-              color: Colors.amberAccent,
+              padding: const EdgeInsets.symmetric(
+                vertical: 10.0,
+              ),
               child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: recommendedItemsMock.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: Container(
-                    width: 120.0,
-                    color: Theme.of(context).accentColor,
-                    child: Text(recommendedItemsMock[index]),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: recommendedItemsMock.length,
+                  itemBuilder: (context, index) {
+                    FoodItemModel item = recommendedItemsMock[index];
+                    return FoodItem(
+                      item: item,
+                    );
+                  }),
+            ),
+            SizedBox(height: 30.0),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(top: 15.0),
+                width: MediaQuery.of(context).size.width,
+                height: 100.0,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
                   ),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Text('Other stuff here'),
+                  ],
                 ),
               ),
             ),
