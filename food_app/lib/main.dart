@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/models/variables_models.dart';
 import 'Pages/home.dart';
 
 void main(List<String> args) {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-      primaryColor: Color(0xFFF2E3BC),
-      accentColor: Color(0xFF96BBBB),
-    ),
+    theme: mainTheme,
     home: Home(),
   ));
 }

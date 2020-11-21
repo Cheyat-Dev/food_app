@@ -1,5 +1,6 @@
 class FoodItemModel {
   String itemName;
+  String itemDetail;
 
-  FoodItemModel({this.itemName});
+  FoodItemModel({this.itemName, this.itemDetail});
 }
