@@ -14,21 +14,39 @@ class FoodItem extends StatefulWidget {
 class _FoodItemState extends State<FoodItem> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 10),
       padding: EdgeInsets.symmetric(
         horizontal: 20.0,
         vertical: 10.0,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).accentColor,
+        color: mainTheme.accentColor,
         borderRadius: BorderRadius.circular(20.0),
       ),
       width: 120.0,
-      child: Center(
-        child: Text(
-          widget.item.itemName,
-          style: headStyle,
-        ),
+      child: Column(
+        children: [
+          Center(
+            child: Text(
+              widget.item.itemName,
+              style: headStyle,
+            ),
+          ),
+          SizedBox(height: 10.0),
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                width: 2.0,
+                color: mainTheme.fontColor,
+              ),
+            ),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/${widget.item.itemName}.jpg'),
+            ),
+          ),
+        ],
       ),
     );
   }

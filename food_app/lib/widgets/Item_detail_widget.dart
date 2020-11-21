@@ -19,7 +19,7 @@ class _ItemDetailState extends State<ItemDetail> {
         width: MediaQuery.of(context).size.width,
         height: 100.0,
         decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
+          color: mainTheme.accentColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
@@ -40,24 +40,38 @@ class _ItemDetailState extends State<ItemDetail> {
                       style: headStyle,
                     ),
                     SizedBox(height: 20.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 2.0),
+                    Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(width: 6.0),
+                            ),
+                            child: CircleAvatar(
+                              radius: 100.0,
+                              backgroundImage: AssetImage(
+                                'assets/${widget.detailModel.itemName}.jpg',
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(7.0, 0, 0, 0),
+                              child: Text(
+                                widget.detailModel.itemDetail,
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontFamily: 'BigShoulders',
+                                  letterSpacing: 2.0,
+                                  color: mainTheme.fontColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      child: Image.asset(
-                        'assets/${widget.detailModel.itemName}.jpg',
-                        width: 300.0,
-                        height: 300.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(height: 20.0),
-                    Text(
-                      widget.detailModel.itemDetail,
-                      style: TextStyle(
-                          fontSize: 25.0,
-                          fontFamily: 'BigShoulders',
-                          letterSpacing: 2.0),
                     ),
                   ],
                 ),

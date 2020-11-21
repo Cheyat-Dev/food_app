@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/models/food_item.dart';
+import 'package:food_app/models/variables_models.dart';
 import 'package:food_app/widgets/Item_detail_widget.dart';
 import 'package:food_app/widgets/food_item_widget.dart';
 
@@ -20,7 +21,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     List<FoodItemModel> recommendedItemsMock = [
-      FoodItemModel(itemName: 'Tea', itemDetail: 'Tea for good times'),
+      FoodItemModel(
+          itemName: 'Tea',
+          itemDetail: 'Our tea makes for some of the best morning times'),
       FoodItemModel(
           itemName: 'Coffee', itemDetail: 'Coffee for concerntrating!'),
       FoodItemModel(
@@ -31,19 +34,29 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        elevation: 0.0,
-        title: Text(
-          'Food App',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 50.0,
-            fontFamily: 'BigShoulders',
+          backgroundColor: mainTheme.primaryColor,
+          elevation: 0.0,
+          title: Text(
+            'Food App',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 50.0,
+              fontFamily: 'BigShoulders',
+              color: Color(0xff000000),
+            ),
           ),
-        ),
-      ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.settings,
+                color: Color(0xff000000),
+                size: 35.0,
+              ),
+              onPressed: () {},
+            ),
+          ]),
       body: Container(
-        color: Theme.of(context).primaryColor,
+        color: mainTheme.primaryColor,
         child: Column(
           children: <Widget>[
             SizedBox(height: 50.0),
@@ -52,6 +65,9 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.symmetric(
                 vertical: 10.0,
               ),
+
+              // Item List View here
+
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: recommendedItemsMock.length,
